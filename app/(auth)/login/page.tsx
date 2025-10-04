@@ -12,7 +12,8 @@ export default function LoginPage(){
     authData.userEmail = formData.get("userEmail");
     authData.userPassword = formData.get("userPassword");
     const{data}= await axios.post(`${API_URL}/auth/login`,{
-      ...authData
+      ...authData,
+      
     },{
       withCredentials:true,
     });
@@ -27,7 +28,7 @@ export default function LoginPage(){
         <Input label="Contraseña" name="userPassword" type="password" isRequired={true} size="sm"/>   
       </div>
       <div className="flex flex-col items-center gap-2">
-      <Button color="primary"type="Submit">Iniciar Sesión</Button>
+      <Button color="primary"type="submit">Iniciar Sesión</Button>
       <p className="text-white">¿No tienes cuenta?<Link href="/signup" 
       className="text-orange-200 underline"> Registrate</Link></p>
       <p><span><a href=""></a></span></p>
