@@ -1,21 +1,36 @@
+"use client";
 import { Button, Input, button } from "@heroui/react"
 import Link from "next/link";
+import axios from "axios";
+import { API_URL } from "@/constants";
 
 export default function LoginPage(){
+  const handleSubmit =async (e: React.FormEvent) =>{
+    e.preventDefault()
+    const formData = new FormData(e.target);
+    let authData: any = {}  
+    authData.userEmail = formData.get("userEmail");
+    authData.userPassword = formData.get("userPassword");
+    const{data}= await axios.post(`${API_URL}/auth/login`,{
+      ...authData
+    });
+    console.log(data);
+    return;
+  }
     return (
-      <div className="bg-orange-500 px-10 py-2 rounded-md ">
+      <form className="bg-orange-500 px-10 py-2 rounded-md " onSubmit={handleSubmit}>
         <p className="text-2xl my-4 text-white">Iniciar sesión <span></span></p>
       <div className="flex flex-col gap-2 my-5 items-center">
-        <Input label="Email" type="email" isRequired={true} size="sm"/>   
-        <Input label="Contraseña" type="password" isRequired={true} size="sm"/>   
+        <Input label="Email" name= "userEmail" type="email" isRequired={true} size="sm"/>   
+        <Input label="Contraseña" name="userPassword" type="password" isRequired={true} size="sm"/>   
       </div>
       <div className="flex flex-col items-center gap-2">
-      <Button color="primary"variant="solid">Registrarse</Button>
+      <Button color="primary"type="Submit">Iniciar Sesión</Button>
       <p className="text-white">¿No tienes cuenta?<Link href="/signup" 
       className="text-orange-200 underline"> Registrate</Link></p>
       <p><span><a href=""></a></span></p>
       </div>
-      </div>
+      </form>
   
     );
   }
