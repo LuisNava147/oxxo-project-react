@@ -6,7 +6,7 @@ import SelectLocation from "./_components/SelectLocation";
 
 
 
-const CountPage = async()=>{
+const LocationsPage = async()=>{
     const userCookies = cookies();
     const token = userCookies.get(TOKEN_NAME)?.value;
     const {data}= await axios.get<Location[]>("http://127.0.0.1:4001/locations",{
@@ -16,10 +16,14 @@ const CountPage = async()=>{
     })
    
 return  (
-<div className="w-2/12">
-   <SelectLocation locations={data}></SelectLocation>
+<div className="w-8/12">
+    <div className="w-full flex flex-col items-center h-[90vh] bg-red-50">
+        <div className="w.1/2 my-10">
+            <SelectLocation locations={data}></SelectLocation>
+   </div>
+   </div>
 </div>
 );
 }
 
-export default CountPage
+export default LocationsPage
