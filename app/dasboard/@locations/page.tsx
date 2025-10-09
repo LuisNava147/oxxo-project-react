@@ -3,6 +3,7 @@ import {cookies} from "next/headers";
 import { TOKEN_NAME } from "@/constants";
 import { Location } from "@/entities";
 import SelectLocation from "./_components/SelectLocation";
+import LocationCard from "./_components/LocationCard";
 
 
 
@@ -25,14 +26,15 @@ data=[
 },
 ...data
 ]
-
-data
    
 return  (
 <div className="w-7/12">
     <div className="w-full flex flex-col items-center h-[90vh] bg-red-50">
         <div className="w.1/2 my-10">
             <SelectLocation locations={data} store={searchParams?.store}></SelectLocation>
+            <div className="w-full">
+                <LocationCard store={searchParams.store}/>
+            </div>
    </div>
    </div>
 </div>
