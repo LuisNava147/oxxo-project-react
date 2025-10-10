@@ -29,3 +29,4 @@ export interface Manager{
     location: Location;
     user:any;
 }
+

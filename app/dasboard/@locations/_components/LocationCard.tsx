@@ -18,11 +18,12 @@ export default async function LocationCard({store}:{store:string | string[] | un
     return(
         <Card>
             <CardHeader>
-            <b>{data.locationName}</b>
+            <b className="w-full text-2xl">{data.locationName}</b>
             </CardHeader>
             <Divider/>
-            <CardBody>
-            <p className="w-8/12">Manager: <Link href={{pathname:`/dasboard/managers`}}><b>{data.manager?.managerFullName}</b></Link></p>
+            <CardBody className="flex flex-col w-full items-center">
+            <p className="w-full">Manager: <Link href={{pathname:`/dasboard/managers`}}><b>{data.manager?.managerFullName}</b></Link></p>
+            <p className="w-full">Dirección: <b>{data.locationAddress}</b></p>
             </CardBody>
         </Card>
     )
