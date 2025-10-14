@@ -1,6 +1,12 @@
 "use server";
+import axios from "axios";
+import { cookies } from "next/headers";
+import { TOKEN_NAME, API_URL } from "@/constants";
+
 //el cliente sube data al servidor
 export async function createLocation(formData: FormData){
+    const token = cookies().get(TOKEN_NAME)?.value
+    
     let location: any = {}
     let locationLatLng = [0, 0];
     for (const key of formData.keys()){
@@ -8,8 +14,8 @@ export async function createLocation(formData: FormData){
         if(value){
             if(key == "locationLat"){
                 locationLatLng[0] = +value;  
-            }else if(key == "LocationLng"){
-                location[1] = +value;  
+            }else if(key == "locationLng"){
+                locationLatLng[1] = +value;  
             }else{
                 location[key] = formData.get(key); 
             }  
@@ -18,5 +24,11 @@ export async function createLocation(formData: FormData){
         
     }
     location.locationLatLng = locationLatLng
-    console.log(location)
+    axios.post(`${API_URL}/locations/`,{
+        ...location
+    },{
+        headers : {
+            Authorization: `Bearer ${token}`
+        }
+    })
 }   

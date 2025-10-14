@@ -20,11 +20,11 @@ export default async function FormNewLocation(){
     })
 
     return (
-    <form action={createLocation}>
-        <Input label ="Nombre" name="locationName" />
-        <Input label ="Dirección" name="locationAddress" />
-        <Input label ="Latitud" name="locationLat" />
-        <Input label ="Longitud" name="locationLng" />
+    <form action={createLocation} className="bg-orange-400 py-2 px-4 flex flex-col gap-6">
+        <Input label ="Nombre" placeholder="Oxxo Juriquilla" name="locationName" />
+        <Input label ="Dirección" placeholder="Av de La Luz S/N" name="locationAddress" />
+        <Input label ="Latitud" placeholder="-120" name="locationLat" />
+        <Input label ="Longitud" placeholder="20" name="locationLng" />
         <SelectManager managers={responseManagers.data} locations={responseLocation.data}/>
         <button type="submit"> Subir </button>
     </form>
