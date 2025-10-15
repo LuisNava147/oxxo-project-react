@@ -1,7 +1,9 @@
 "use server";
 import { TOKEN_NAME, API_URL } from "@/constants";
+import { Location } from "@/entities";
 import { authHeaders } from "@/helpers/authHeaders";
 import { revalidatePath, revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
 
 //el cliente sube data al servidor
 export async function createLocation(formData: FormData){
@@ -27,8 +29,13 @@ export async function createLocation(formData: FormData){
         method: "POST",
         body: JSON.stringify(location),
         headers : {
+            'content-type': 'application/json',
             ...authHeaders()
         }
     })
-    if(response.status == 201) revalidateTag("dasboard:locations");
+    const {locationId}:Location = await response.json()
+    if(response.status == 201) {
+        revalidateTag("dasboard:locations");
+        redirect(`/dasboard?store=${locationId}`)
+    }
 }   
