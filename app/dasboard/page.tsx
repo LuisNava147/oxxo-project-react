@@ -13,6 +13,9 @@ export default function DashboardPage({searchParams}:{searchParams : { [key: str
             ): <p className="w-full text-2xl px2 text-center mt-10">Selecciona una tienda para ver los empleados</p>
         }
         </div>
+        <div>
+            
+        </div>
     </div>
     </>
 )
