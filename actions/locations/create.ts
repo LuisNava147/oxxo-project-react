@@ -1,8 +1,7 @@
 "use server";
-import axios from "axios";
-import { cookies } from "next/headers";
 import { TOKEN_NAME, API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHeaders";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 //el cliente sube data al servidor
 export async function createLocation(formData: FormData){
@@ -24,11 +23,12 @@ export async function createLocation(formData: FormData){
         
     }
     location.locationLatLng = locationLatLng
-    axios.post(`${API_URL}/locations/`,{
-        ...location
-    },{
+    const response = await fetch(`${API_URL}/locations/`, {
+        method: "POST",
+        body: JSON.stringify(location),
         headers : {
             ...authHeaders()
         }
     })
+    if(response.status == 201) revalidateTag("dasboard:locations");
 }   
