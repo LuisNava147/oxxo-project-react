@@ -2,10 +2,10 @@
 import axios from "axios";
 import { cookies } from "next/headers";
 import { TOKEN_NAME, API_URL } from "@/constants";
+import { authHeaders } from "@/helpers/authHeaders";
 
 //el cliente sube data al servidor
 export async function createLocation(formData: FormData){
-    const token = cookies().get(TOKEN_NAME)?.value
     
     let location: any = {}
     let locationLatLng = [0, 0];
@@ -28,7 +28,7 @@ export async function createLocation(formData: FormData){
         ...location
     },{
         headers : {
-            Authorization: `Bearer ${token}`
+            ...authHeaders()
         }
     })
 }   
