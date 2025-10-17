@@ -4,7 +4,6 @@ import { Select,SelectItem } from "@heroui/react";
 import { useRouter } from "next/navigation";
 
 export default function SelectLocation({locations,store}:{locations:Location[],store: string | string[] | undefined}){
-   
     const router = useRouter();
    return(
     <Select placeholder="Selecciona una tienda" 
