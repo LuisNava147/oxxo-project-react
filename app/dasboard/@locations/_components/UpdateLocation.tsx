@@ -24,7 +24,6 @@ import {LuPenTool} from "react-icons/lu";
           <ModalContent>
             {() => (
               <>
-                <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
                 <ModalBody>
                
                   {children}

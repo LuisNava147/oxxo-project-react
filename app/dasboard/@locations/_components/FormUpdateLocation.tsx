@@ -1,15 +1,15 @@
 import { Input } from "@heroui/react";
-import {createLocation} from "@/actions/locations/create";
 import { API_URL } from "@/constants";
 import SelectManager from "./SelectManager";
 import { authHeaders } from "@/helpers/authHeaders";
 import { Manager } from "@/entities";
 import { Location } from "@/entities";
+import { updateLocation } from "@/actions/locations/update";
 
 //el cliente sube data al servidor
 export default async function FormUpdateLocation({store}:{store?: string | string[] | undefined}){
-    if(!store || store==undefined) return null;
-
+    if(!store || store==undefined || typeof store == "object") return null;
+    const updateWithStoreId = updateLocation.bind(null,store);
     const responseManagers = await fetch(`${API_URL}/managers`,{
         headers: {
             ...authHeaders()
@@ -34,7 +34,7 @@ export default async function FormUpdateLocation({store}:{store?: string | strin
     let foundManager = dataManager.find((managers)=>managers.managerId == foundLocation?.manager?.managerId)
 
     return (
-    <form action={createLocation} className="bg-orange-400 py-2 px-4 flex flex-col gap-6 w-full rounder-lg">
+    <form action={updateWithStoreId} className="bg-orange-400 py-2 px-10 flex flex-col gap-6 w-full rounder-lg">
         <h1 className="text-3x1 text-white text-center">Crear Tienda</h1>
         <Input defaultValue={foundLocation?.locationName} label ="Nombre" placeholder="Oxxo Juriquilla" name="locationName" />
         <Input defaultValue={foundLocation?.locationAddress} label ="Dirección" placeholder="Av de La Luz S/N" name="locationAddress" />
