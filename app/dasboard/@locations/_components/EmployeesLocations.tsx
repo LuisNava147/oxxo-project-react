@@ -4,7 +4,7 @@ import { Card,CardBody, CardHeader, Divider } from "@heroui/react";
 import { authHeaders } from "@/helpers/authHeaders";
 
 export default async function EmployeesLocation({ store }:{ store: string | string[] | undefined}){
-
+    if(!store) return "Employees not found";
     const response = await fetch(`${API_URL}/employees/location/${store}`,{
         method: "GET",
         headers:{
