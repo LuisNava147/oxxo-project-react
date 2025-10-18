@@ -21,7 +21,7 @@ export default async function ManagerCards(){
        
            return (
             <Link href={{pathname:`/dasboard/managers/${manager.managerId}`}}>
-           <Card className="mx-10 my-10">
+           <Card className="mx-10 my-10 hover:scale-[110%] hover:bg-blue-100">
             <CardHeader>
             <p className="w-full">Nombre: <b>{manager.managerFullName}</b></p>
             
