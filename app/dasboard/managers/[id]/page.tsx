@@ -5,6 +5,7 @@ import { Card,CardBody, Divider, CardHeader } from "@heroui/react"
 import ManagerCard from "./_components/ManagerCard"
 import DeleteManagerButton from "./_components/DeleteManagerButton"
 import FormUpdateManager from "./_components/FormUpdateManager"
+import UpdateManager from "./_components/UpdateManager"
 
 export default async function ManagerPage({params}:{params :{id:string}}){
     const response = await fetch(`${API_URL}/managers/${params.id}`,{
@@ -20,8 +21,10 @@ return (
    <div className="flex-col gap-10 flex flex-grow-0 items-center">
     <ManagerCard manager={data} />
     <div className="bg-white shadow-medium rounded-md px-10 py-2">
-    <DeleteManagerButton managerId={data.managerId} />
+    <UpdateManager>
     <FormUpdateManager manager={data} />
+    </UpdateManager>
+    <DeleteManagerButton managerId={data.managerId} />
     </div>
    </div>
 )

@@ -1,9 +1,18 @@
 import updateManager from "@/actions/managers/update";
 import { Manager } from "@/entities";
 import { Button, Input } from "@heroui/react";
+import SelectStore from "./SelectStore";
+import { API_URL } from "@/constants";
+import { authHeaders } from "@/helpers/authHeaders";
 
-export default function FormUpdateManager({manager}:{manager:Manager}){
+export default async function FormUpdateManager({manager}:{manager:Manager}){
     const updateManagerWithId =updateManager.bind(null,manager.managerId)
+    const responseStores = await fetch(`${API_URL}/locations`,{
+        headers:{
+            ...authHeaders()
+        },
+        })
+    const stores = await responseStores.json()
 return (
     <form action={updateManagerWithId} className="bg-orange-400 rounded-md">
     <h1>Actualizar manager</h1>
@@ -15,6 +24,7 @@ return (
          name="12000" />
         <Input defaultValue={manager.managerPhoneNumber} placeholder="442xxxxxxx"
          name="442xxxxxxx" />
+        <SelectStore stores={stores} defaultStore={manager?.location?.locationId}/>
         <Button color="primary" type="submit">
             Actualizar
         </Button>
