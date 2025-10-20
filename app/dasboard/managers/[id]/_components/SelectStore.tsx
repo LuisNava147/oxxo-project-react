@@ -10,10 +10,10 @@ export default function SelectStore({stores,defaultStore}:{stores:Location[], de
         }
     }).filter((storeId) => storeId != undefined)
 return (
-    <Select defaultSelectedKeys={defaultStore ? [defaultStore] : undefined} disabledKeys={disabledStores}>
+    <Select defaultSelectedKeys={defaultStore ? [String(defaultStore)] : undefined} disabledKeys={disabledStores}>
     {
         stores.map((store:Location)=>(
-            <SelectItem key={store.locationId}>
+            <SelectItem key={String(store.locationId)}>
                 {store.locationName}
             </SelectItem>
         ))

@@ -20,7 +20,7 @@ export default async function ManagerPage({params}:{params :{id:string}}){
 return (
    <div className="flex-col gap-10 flex flex-grow-0 items-center">
     <ManagerCard manager={data} />
-    <div className="bg-white shadow-medium rounded-md px-10 py-2">
+    <div className="bg-white shadow-medium rounded-md px-10 py-2 flex flex-row flex-grow-0 gap-2">
     <UpdateManager>
     <FormUpdateManager manager={data} />
     </UpdateManager>
