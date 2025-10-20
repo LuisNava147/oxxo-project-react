@@ -3,12 +3,14 @@ import { Card,CardBody, CardHeader, Divider } from "@heroui/react";
 
 export default function ProviderCard({provider}:{provider:Provider}){
 return(
-    <Card className="w-4/12">
+    <Card className="">
         <CardHeader>{provider.providerName}</CardHeader>
         <Divider />
         <CardBody>
-            <p>Correo Electrónico:<b>{provider.providerEmail}</b></p>
-            <p>Número:<b>{provider.providerPhoneNumber}</b></p>
+            <p>Correo Electrónico:</p>
+            <b>{provider.providerEmail}</b>
+            <p>Número:</p>
+            <b>{provider.providerPhoneNumber}</b>
             {
                 provider.products ? (
                 <p>Tiene <b>{provider.products.length}</b> productos</p>

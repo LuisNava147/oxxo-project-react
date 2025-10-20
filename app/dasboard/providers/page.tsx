@@ -3,7 +3,8 @@ import { Provider } from "@/entities";
 import { authHeaders } from "@/helpers/authHeaders";
 import ProviderCard from "./_components/ProviderCard";
 import Link from "next/link";
-
+import { Button } from "@heroui/react";
+import { LuPlus } from "react-icons/lu"
 
 const ProviderPage = async () =>{
 const response = await fetch(`${API_URL}/providers`, {
@@ -13,13 +14,18 @@ const response = await fetch(`${API_URL}/providers`, {
 }) 
 const providers:Provider[] = await response.json()
 return(
-    <div className="w-full flex-row flex-grow-0 flex-wrap px-10">
+    <div className="flex flex-grow-0 flex-col items-end w-full px-10 pt-10 h-[90vh]">
+        <Button className="w-fit" color="primary">
+            <LuPlus size="20" />
+        </Button>
+    <div className="flex  py-20 flex-wrap w-full gap-14">
         {providers.map((provider: Provider)=>(
-       <Link href={{pathname: `/dasboard/providers/${provider.providerId}`}}>   
+       <Link className="hover:scale-110 transition-transform" href={{pathname: `/dasboard/providers/${provider.providerId}`}}>   
         <ProviderCard provider={provider} key={provider.providerId}/>
         </Link>
         ))}
        
+    </div>
     </div>
 )
 }
