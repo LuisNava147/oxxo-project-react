@@ -1,9 +1,10 @@
 import { Provider } from "@/entities";
 import { Card,CardBody, CardHeader, Divider } from "@heroui/react";
 
-export default function ProviderCard({provider}:{provider:Provider}){
+
+export default async function ProviderCard({provider}:{provider:Provider}){
 return(
-    <Card className="">
+    <Card className="w-full min-w-[350px]">
         <CardHeader>{provider.providerName}</CardHeader>
         <Divider />
         <CardBody>
@@ -11,9 +12,10 @@ return(
             <b>{provider.providerEmail}</b>
             <p>Número:</p>
             <b>{provider.providerPhoneNumber}</b>
+            
             {
-                provider.products ? (
-                <p>Tiene <b>{provider.products.length}</b> productos</p>
+                provider.products.length !=0 ? (
+                <p>Tiene <b>{provider.products.length}</b> producto{provider.products.length > 1 ? "s" : ""}</p>
                 ) : <p>No tiene productos</p>
             }
         </CardBody>
