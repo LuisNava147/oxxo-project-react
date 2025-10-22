@@ -14,8 +14,9 @@ export default async function createProvider(formData: FormData){
         method: "POST",
         body: JSON.stringify(provider),
         headers:{
-            'content-type': 'application/json',
-            ...authHeaders()
+            
+            ...authHeaders(),
+            'content-type': 'application/json'
         },
        
     })
