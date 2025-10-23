@@ -18,7 +18,7 @@ export default async function updateProvider(providerId: string, formData: FormD
         },
        
     })
-    console.log(await response.json())
+    //console.log(await response.json())
     if(response.status ==200) revalidateTag("dasboard:providers")
     
 }
