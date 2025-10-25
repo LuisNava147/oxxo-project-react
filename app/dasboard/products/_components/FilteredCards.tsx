@@ -17,7 +17,7 @@ export default function FilteredCards({products}:{products:Product[]}){
         setProductsList(filteredProducts)
     },[filtered])
     return (
-        <>
+        <div className=" max-h-[90vh] overflow-y-auto h-full flex flex-col gap-8 border-r-orange-400 border-r-2 pt-10 px-10">
         <Input onChange={(e)=>{
             setFiltered(e.target.value)
         }}
@@ -33,6 +33,6 @@ export default function FilteredCards({products}:{products:Product[]}){
  )
         })}
                 
-        </>
+        </div>
     )
 }
