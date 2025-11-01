@@ -8,7 +8,8 @@ import { SelectItem } from "@heroui/react";
 //barra de busqueda
 export default function FilteredCards({products, providers}:{products:Product[], providers:Provider[]}){
     const [filtered, setFiltered] = useState<string>("");
-    const [provider, setProvider] = useState<string>()
+    const [provider, setProvider] = useState<string>();
+    const[show, setShow] = useState(false)
     const [productsList, setProductsList] = useState<Product[]>(products)
     useEffect(()=>{
         const filteredProducts = products.filter((product)=>{
@@ -18,7 +19,9 @@ export default function FilteredCards({products, providers}:{products:Product[],
             }else return false
         })
         setProductsList(filteredProducts)
+        setShow(true)
     },[filtered, provider])
+
     return (
         <div className=" max-h-[90vh] overflow-y-auto h-full flex flex-col gap-8 border-r-orange-400 border-r-2 pt-10 px-10">
         <Select label="Proveedor" onChange={(e)=>{
@@ -34,9 +37,10 @@ export default function FilteredCards({products, providers}:{products:Product[],
         }}
         label="Nombre del producto"
         />
-        {productsList.map((product)=>{
+        {show && productsList.map((product)=>{
         return (
             <Link 
+            className="hover:scale-110 transition-transform"
             key={product.productId}
             href={{pathname: `/dasboard//products/${product.productId}`}}>
             <ProductCard product={product} />

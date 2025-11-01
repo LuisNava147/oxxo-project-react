@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 
 
 export default async function deleteProvider(providerId:string,formData: FormData){
+    
     const response = await fetch(`${API_URL}/providers/${providerId}`,{
         method: "DELETE",
         headers:{
