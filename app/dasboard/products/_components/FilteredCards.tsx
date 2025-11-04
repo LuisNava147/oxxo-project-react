@@ -20,10 +20,10 @@ export default function FilteredCards({products, providers}:{products:Product[],
         })
         setProductsList(filteredProducts)
         setShow(true)
-    },[filtered, provider])
+    },[filtered, provider, products])
 
     return (
-        <div className=" max-h-[90vh] overflow-y-auto h-full flex flex-col gap-8 border-r-orange-400 border-r-2 pt-10 px-10">
+        <div className=" max-h-[90vh] overflow-y-auto h-full flex flex-col gap-4 border-r-orange-400 border-r-2 pt-10 px-10">
         <Select label="Proveedor" onChange={(e)=>{
            setProvider(e.target.value)
         }}>

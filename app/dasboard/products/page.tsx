@@ -20,7 +20,7 @@ const ProductsPage = async ()=>{
         <Input label="Nombre"  name="productName" />
         <Input label="Precio" endContent={<LuDollarSign size="20" />}name="price" />
         <Input label="Num. de Sellos" name="countSeal" />
-        <SelectProvider providers={providers} defaultProvider=""/>
+        <SelectProvider providers={providers} />
         <Button color="primary" type="submit">Crear Producto</Button>
         </div>
         </form>

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function ProductCard({product}:{product:Product}){
     return (
-        <Card className=" max-w-[350px]" >
+        <Card className=" max-w-[350px] mb-8" >
             <CardHeader>{product.productName}</CardHeader>
             <Divider />
             <CardBody>
