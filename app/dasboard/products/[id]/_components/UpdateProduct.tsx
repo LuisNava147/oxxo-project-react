@@ -10,7 +10,7 @@ export default function UpdateProduct({product, providers}:{product:Product, pro
     const {productId} = product
     const updateProductById = updateProducts.bind(null, productId )
     return(
-        <form action={updateProductById} className="flex flex-col gap-4 p-10 gap-2">
+        <form action={updateProductById} className="flex flex-col p-10 gap-2">
             <Input name="productName" label="Nombre" defaultValue={product.productName} />
             <Input name="countSeal" label="No. de Sellos" defaultValue={String(product.countSeal)} />
             <Input name="price" label="Precio" defaultValue={String(product.price)}/>
