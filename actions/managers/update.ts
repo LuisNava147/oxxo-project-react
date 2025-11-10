@@ -7,7 +7,6 @@ import { revalidateTag } from "next/cache";
 export default async function updateManager(managerId:string,formData: FormData){
     let manager:any = {}
     for (const key of formData.keys()){
-        const value = formData.get(key)
         manager[key] = formData.get(key); 
         
     }
