@@ -4,6 +4,7 @@ import { authHeaders } from "@/helpers/authHeaders"
 import { Employee } from "@/entities"
 import { Image } from "@heroui/react"
 import FormUpdateEmployee from "./_components/FormUpdateEmployee"
+import EmployeeDataCard from "./_components/EmployeeDataCard"
 
 export default async function EmployeesPage({params}:{params:{id : string}}){
     const responseEmployee = await fetch(`${API_URL}/employees/${params.id}`,{
@@ -13,17 +14,8 @@ export default async function EmployeesPage({params}:{params:{id : string}}){
     })
     const employee : Employee = await responseEmployee.json()
     return (
-        <div className="w-full h-[90vh] flex flex-row">
-            <div>
-            <EmployeeCard employee={employee} />
-            <Image src={employee.employeePhoto} 
-            isZoomed
-            className="object-cover"
-            classNames={{
-                img: "size-60"
-            }}
-            />
-            </div>
+        <div className="w-full h-[90vh] flex flex-row items-center justify-center">
+            <EmployeeDataCard employee={employee} />
             <FormUpdateEmployee employee={employee}/>
         </div>
     )
