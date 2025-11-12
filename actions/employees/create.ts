@@ -15,7 +15,7 @@ const response = await fetch(`${API_URL}/employees`,{
     },
     body: formData,
 })
-
+//console.log(await response.json())
 if(response.status == 201) revalidateTag("dasboard:employees")
 
     return;
