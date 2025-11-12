@@ -2,8 +2,6 @@
 import { Employee, Location } from "@/entities"
 import EmployeeCard from "./EmployeeCard"
 import EmployeePhotoCard from "./EmployeePhotoCard"
-import CreateEmployee from "./CreateEmployee"
-import FormCreateEmployee from "./FormCreateEmployee"
 import { useState } from "react"
 import { Select, SelectItem } from "@heroui/react"
 
