@@ -23,7 +23,7 @@ return (
             length:10
          }))
        }}>Generar contraseña</Button>
-       <Button type="submit">Crear usuario</Button>
+       <Button color= "primary" type="submit">Crear usuario</Button>
     </form>
 )
 }
